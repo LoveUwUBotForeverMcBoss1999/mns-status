@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Stats</title>
+    <title>MNS Minecraft Network - Server Status</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="proxy-status">
-            <h1>Proxy Server Player Count</h1>
-            <p id="player-count">Loading...</p>
-        </div>
-    </header>
+    <div class="container">
+        <nav>
+            <a href="https://mnsnetwork.xyz/" class="home-link">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+        </nav>
+        
+        <header>
+            <h1>MNS Minecraft Network</h1>
+            <div class="total-players">
+                <span id="current-players">-</span>/<span id="max-players">-</span> Players Online
+            </div>
+        </header>
 
-    <div class="server-list">
-        <h2>Server List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Server Name</th>
-                    <th>Status</th>
-                    <th>Current Players</th>
-                    <th>Max Players</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for server in server_stats %}
-                <tr>
-                    <td>{{ server.name }}</td>
-                    <td>{{ server.status }}</td>
-                    <td>{{ server.current_players }}/{{ server.max_players }}</td>
-                    <td>{{ server.max_players }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <main>
+            <div class="server-grid" id="server-grid">
+                <!-- Servers will be populated by JavaScript -->
+            </div>
+
+            <div class="ip-section">
+                <button id="copy-ip" class="copy-button">
+                    <span class="ip">mc.mnsnetwork.xyz</span>
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </main>
     </div>
-
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
