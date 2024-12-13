@@ -1,0 +1,144 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-color: #ecf0f1;
+    --success-color: #2ecc71;
+    --warning-color: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+nav {
+    margin-bottom: 2rem;
+}
+
+.home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--accent-color);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.total-players {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.server-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.server-card {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.server-card:hover {
+    transform: translateY(-5px);
+}
+
+.server-name {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.server-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-online {
+    background-color: var(--success-color);
+}
+
+.status-offline {
+    background-color: var(--warning-color);
+}
+
+.server-players {
+    margin-top: 0.5rem;
+    color: var(--accent-color);
+}
+
+.ip-section {
+    text-align: center;
+}
+
+.copy-button {
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: var(--accent-color);
+}
+
+.copy-button .ip {
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .server-grid {
+        grid-template-columns: 1fr;
+    }
+}
