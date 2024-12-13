@@ -3,32 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Server Stats</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Server Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <!-- Display Proxy server member count at the top -->
-        <div class="header">
-            <h1>Proxy Server Member Count: {{ servers[3]['members'] }} Players</h1>
+    <header>
+        <div class="proxy-status">
+            <h1>Proxy Server Player Count</h1>
+            <p id="player-count">Loading...</p>
         </div>
+    </header>
 
-        <!-- Server List -->
-        <div class="server-list">
-            <h2>Server Status</h2>
-            <ul>
-                {% for server in servers %}
-                    {% if server['name'] != 'Proxy' %}
-                        <li class="server-item {{ server['status'] }}">
-                            <div class="server-info">
-                                <h3>{{ server['name'] }}</h3>
-                                <p>Status: <span class="status">{{ server['status'] }}</span></p>
-                            </div>
-                        </li>
-                    {% endif %}
+    <div class="server-list">
+        <h2>Server List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Server Name</th>
+                    <th>Status</th>
+                    <th>Current Players</th>
+                    <th>Max Players</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for server in server_stats %}
+                <tr>
+                    <td>{{ server.name }}</td>
+                    <td>{{ server.status }}</td>
+                    <td>{{ server.current_players }}/{{ server.max_players }}</td>
+                    <td>{{ server.max_players }}</td>
+                </tr>
                 {% endfor %}
-            </ul>
-        </div>
+            </tbody>
+        </table>
     </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
