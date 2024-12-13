@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Records</title>
+    <title>Minecraft Server Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>AuthMe Records</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Real Name</th>
-                <th>Email</th>
-                <th>Last Login</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for record in records %}
-            <tr>
-                <td>{{ record.id }}</td>
-                <td>{{ record.username }}</td>
-                <td>{{ record.realname }}</td>
-                <td>{{ record.email }}</td>
-                <td>{{ record.lastlogin }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <!-- Display Proxy server member count at the top -->
+        <div class="header">
+            <h1>Proxy Server Member Count: {{ servers[3]['members'] }} Players</h1>
+        </div>
+
+        <!-- Server List -->
+        <div class="server-list">
+            <h2>Server Status</h2>
+            <ul>
+                {% for server in servers %}
+                    {% if server['name'] != 'Proxy' %}
+                        <li class="server-item {{ server['status'] }}">
+                            <div class="server-info">
+                                <h3>{{ server['name'] }}</h3>
+                                <p>Status: <span class="status">{{ server['status'] }}</span></p>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
