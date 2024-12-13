@@ -19,7 +19,18 @@ SERVERS = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    try:
+        proxy_server = JavaServer(PROXY_SERVER, PROXY_PORT)
+        proxy_status = proxy_server.status()
+        proxy_players = proxy_status.players.online
+        proxy_max_players = proxy_status.players.max
+    except:
+        proxy_players = 0
+        proxy_max_players = 0
+    
+    return render_template('index.html', 
+                         proxy_players=proxy_players,
+                         proxy_max_players=proxy_max_players)
 
 @app.route('/api/stats')
 def get_stats():
