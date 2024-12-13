@@ -1,0 +1,80 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header Section */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #007bff;
+    font-size: 2em;
+}
+
+/* Server List */
+.server-list {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.server-list h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.server-list ul {
+    list-style-type: none;
+}
+
+.server-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.server-info {
+    font-size: 1.2em;
+}
+
+.status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.server-item.Online .status {
+    background-color: #28a745; /* Green */
+}
+
+.server-item.Stopped .status {
+    background-color: #dc3545; /* Red */
+}
+
+.server-item.Restarting .status {
+    background-color: #ffc107; /* Yellow */
+}
