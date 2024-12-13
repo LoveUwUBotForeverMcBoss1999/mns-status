@@ -4,15 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch('/api/stats');
             const stats = await response.json();
             
-            let totalPlayers = 0;
-            let totalMaxPlayers = 0;
+            // Update header with only proxy player count
+            const proxyStats = stats['Proxy'] || { players: 0, max_players: 0 };
+            document.getElementById('current-players').textContent = proxyStats.players;
+            document.getElementById('max-players').textContent = proxyStats.max_players;
+            
             const serverGrid = document.getElementById('server-grid');
             serverGrid.innerHTML = '';
             
             Object.entries(stats).forEach(([serverName, serverData]) => {
-                totalPlayers += serverData.players;
-                totalMaxPlayers += serverData.max_players;
-                
                 const serverCard = document.createElement('div');
                 serverCard.className = 'server-card';
                 serverCard.innerHTML = `
@@ -27,9 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 serverGrid.appendChild(serverCard);
             });
-            
-            document.getElementById('current-players').textContent = totalPlayers;
-            document.getElementById('max-players').textContent = totalMaxPlayers;
         } catch (error) {
             console.error('Error fetching server stats:', error);
         }
