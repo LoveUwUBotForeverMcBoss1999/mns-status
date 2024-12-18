@@ -9,12 +9,12 @@ PROXY_PORT = int(os.getenv('PROXY_PORT', 25565))
 
 # Server configurations
 SERVERS = {
-    "Proxy": {"ip": PROXY_SERVER, "port": PROXY_PORT},
-    "Hub": {"ip": PROXY_SERVER, "port": 25567},
-    "SkyBlock": {"ip": PROXY_SERVER, "port": 25570},
-    "LifeSteal": {"ip": PROXY_SERVER, "port": 25566},
-    "SkyWars": {"ip": PROXY_SERVER, "port": 25569},
-    "Survival": {"ip": os.getenv('SURVIVAL_SERVER', 'in.leoxstudios.com'), "port": int(os.getenv('SURVIVAL_PORT', 10007))}
+    "Proxy": {"ip": "panel2.mcboss.top", "port": 25565},
+    "Hub": {"ip": "panel2.mcboss.top", "port": 25567},
+    "SkyBlock": {"ip": "panel2.mcboss.top", "port": 25570},
+    "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
+    "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
+    "Survival": {"ip": "in.leoxstudios.com", "port": 10007}
 }
 
 app = Flask(__name__)
