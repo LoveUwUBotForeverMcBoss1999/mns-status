@@ -2,6 +2,8 @@ from flask import Flask, render_template, jsonify
 import socket
 import json
 from mcstatus import JavaServer
+from flask import Flask, render_template, request, jsonify
+from database import DatabaseConnection
 
 app = Flask(__name__)
 
@@ -73,6 +75,46 @@ def get_stats():
                 }
     
     return jsonify(stats)
+
+@app.route('/sb-status')
+def index():
+    """
+    Render homepage with top 3 islands
+    """
+    db = DatabaseConnection()
+    top_islands = db.get_top_islands(limit=3)
+    db.close()
+    return render_template('index.html', islands=top_islands)
+
+@app.route('/search')
+def search():
+    """
+    Render search page
+    """
+    return render_template('search.html')
+
+@app.route('/api/search')
+def api_search():
+    """
+    API endpoint for searching islands
+    """
+    search_term = request.args.get('term', '')
+    db = DatabaseConnection()
+    results = db.search_islands(search_term)
+    db.close()
+    return jsonify(results)
+
+@app.route('/island/<owner>')
+def island_details(owner):
+    """
+    Render island details page for a specific owner
+    """
+    db = DatabaseConnection()
+    island = db.get_island_by_owner(owner)
+    db.close()
+    return render_template('island_details.html', island=island)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
