@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ island.name or 'Island Details' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ island.name or 'Unnamed Island' }}</h1>
+        <nav>
+            <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('search') }}" class="nav-link">Search</a>
+        </nav>
+
+        <div class="island-details-container">
+            <img src="https://mc-heads.net/avatar/{{ island.name.split('-')[0] }}" alt="{{ island.owner }}'s Avatar" class="avatar-large">
+
+            <div class="island-info">
+                <h2>Island Information</h2>
+                <p><strong>Owner:</strong> {{ island.name }}</p>
+                <p><strong>Type:</strong> {{ island.island_type }}</p>
+                <p><strong>Level:</strong> {{ island.levels_bonus or 'N/A' }}</p>
+                <p><strong>Worth:</strong> {{ island.worth_bonus or 'N/A' }}</p>
+                <p><strong>Size:</strong> {{ island.generated_schematics or 'N/A' }}</p>
+                <p><strong>Description:</strong> {{ island.description or 'No description' }}</p>
+                <p><strong>Creation Time:</strong> {{ island.creation_time or 'N/A' }}</p>
+                <p><strong>Last Updated:</strong> {{ island.last_time_updated or 'N/A' }}</p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
