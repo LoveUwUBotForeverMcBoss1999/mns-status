@@ -1,5 +1,3 @@
-flask
-mysql-connector-python
-mcstatus
-python-dotenv
-gunicorn  # For production deployment
+flask==3.0.0
+mcstatus==11.0.0
+gunicorn==21.2.0
