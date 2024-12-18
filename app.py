@@ -77,14 +77,14 @@ def get_stats():
     return jsonify(stats)
 
 @app.route('/sb-status')
-def index():
+def sb():
     """
     Render homepage with top 3 islands
     """
     db = DatabaseConnection()
     top_islands = db.get_top_islands(limit=3)
     db.close()
-    return render_template('index.html', islands=top_islands)
+    return render_template('sb.html', islands=top_islands)
 
 @app.route('/search')
 def search():
