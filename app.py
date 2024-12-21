@@ -77,8 +77,17 @@ def get_stats():
 #new rout to get per server status
 @app.route('/api/server/<server_name>')
 def get_server_status(server_name):
-    if server_name in SERVERS:
-        server_info = SERVERS[server_name]
+    # Normalize the input server name to lowercase
+    normalized_server_name = server_name.lower()
+    
+    # Create a mapping of lowercase server names to their original names
+    normalized_servers = {key.lower(): key for key in SERVERS.keys()}
+    
+    if normalized_server_name in normalized_servers:
+        # Get the original server name from the normalized mapping
+        original_server_name = normalized_servers[normalized_server_name]
+        server_info = SERVERS[original_server_name]
+        
         try:
             server = JavaServer(server_info["ip"], server_info["port"])
             status = server.status()
@@ -97,7 +106,9 @@ def get_server_status(server_name):
         server_stats = {
             "error": "Server not found"
         }
+    
     return jsonify({server_name: server_stats})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
