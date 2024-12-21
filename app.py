@@ -9,7 +9,7 @@ PROXY_SERVER = "panel2.mcboss.top"
 PROXY_PORT = 25565
 
 SERVERS = {
-    "Network": {"ip": "panel2.mcboss.top", "port": 25565},
+    "Proxy": {"ip": "panel2.mcboss.top", "port": 25565},
     "Hub": {"ip": "panel2.mcboss.top", "port": 25567},
     "SkyBlock": {"ip": "panel2.mcboss.top", "port": 25570},
     "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
