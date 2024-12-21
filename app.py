@@ -74,5 +74,30 @@ def get_stats():
 
     return jsonify(stats)
 
+#new rout to get per server status
+@app.route('/api/server/<server_name>')
+def get_server_status(server_name):
+    if server_name in SERVERS:
+        server_info = SERVERS[server_name]
+        try:
+            server = JavaServer(server_info["ip"], server_info["port"])
+            status = server.status()
+            server_stats = {
+                "online": True,
+                "players": status.players.online,
+                "max_players": status.players.max
+            }
+        except:
+            server_stats = {
+                "online": False,
+                "players": 0,
+                "max_players": 0
+            }
+    else:
+        server_stats = {
+            "error": "Server not found"
+        }
+    return jsonify({server_name: server_stats})
+
 if __name__ == '__main__':
     app.run(debug=True)
