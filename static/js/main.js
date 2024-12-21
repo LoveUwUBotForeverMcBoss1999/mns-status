@@ -13,10 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
             serverGrid.innerHTML = '';
             
             Object.entries(stats).forEach(([serverName, serverData]) => {
+                // Replace "Proxy" with "Network" in the display name
+                const displayName = serverName === 'Proxy' ? 'Network' : serverName;
+                
                 const serverCard = document.createElement('div');
                 serverCard.className = 'server-card';
                 serverCard.innerHTML = `
-                    <h3 class="server-name">${serverName}</h3>
+                    <h3 class="server-name">${displayName}</h3>
                     <div class="server-status">
                         <span class="status-indicator ${serverData.online ? 'status-online' : 'status-offline'}"></span>
                         <span>${serverData.online ? 'Online' : 'Offline'}</span>
