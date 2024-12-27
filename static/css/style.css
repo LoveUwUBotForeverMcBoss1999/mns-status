@@ -1,4 +1,3 @@
-/* Define Global Colors */
 :root {
     --primary: #3a86ff;
     --primary-dark: #2970e6;
@@ -13,9 +12,18 @@
     --border-color: rgba(131, 56, 236, 0.3);
 }
 
+/* Body Styling */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Navbar Styling */
 .navbar {
-    background: linear-gradient(to right, var(--primary), var(--secondary)); /* Primary to secondary gradient */
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* Gradient background */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
@@ -46,7 +54,7 @@
 .navbar .logo span {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-light);
+    color: #ffffff;
 }
 
 .navbar .nav-links {
@@ -58,7 +66,7 @@
     position: relative;
     font-size: 1rem;
     font-weight: 500;
-    color: var(--text-light);
+    color: #ffffff;
     padding: 0.5rem;
     text-decoration: none;
 }
@@ -80,7 +88,7 @@
     transform: translateX(0);
 }
 
-/* Search and Logout button styles */
+/* Search and Logout buttons on the right (optional, for authenticated users) */
 .navbar .auth-links {
     display: flex;
     gap: 1rem;
@@ -91,22 +99,28 @@
     padding: 0.5rem;
     border: 1px solid #9ba1a6;
     background-color: #1a1d23;
-    color: var(--text-light);
+    color: #ffffff;
     border-radius: 0.375rem;
 }
 
 .navbar .auth-links .search-form button {
     padding: 0.5rem 1rem;
     background-color: var(--primary);
-    color: var(--text-light);
+    color: #ffffff;
     border-radius: 0.375rem;
 }
 
 .navbar .auth-links .logout-btn {
     padding: 0.5rem 1rem;
     background-color: var(--secondary);
-    color: var(--text-light);
+    color: #ffffff;
     border-radius: 0.375rem;
+}
+
+/* Main Content Styling */
+main {
+    padding: 2rem 1rem;
+    flex-grow: 1;
 }
 
 /* Footer Styling */
@@ -140,69 +154,14 @@ footer .logo img {
 
 footer .logo span {
     font-size: 0.875rem;
-    color: var(--text-gray);
+    color: #9ba1a6;
 }
 
 footer .social-links a {
-    color: var(--text-gray);
+    color: #9ba1a6;
     transition: color 0.3s ease;
 }
 
 footer .social-links a:hover {
-    color: var(--text-light);
-}
-
-/* Additional Styling */
-body {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    min-height: 100vh;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Card Styling */
-.card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
-}
-
-/* Input Field Styling */
-.input-field {
-    background-color: var(--darker-bg);
-    border: 1px solid var(--border-color);
-    transition: border-color 0.3s;
-}
-
-.input-field:focus {
-    border-color: var(--primary);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
-}
-
-/* Button Primary Styling */
-.btn-primary {
-    background-color: var(--primary);
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-dark);
-}
-
-/* Footer Links Transition */
-footer .social-links a {
-    color: var(--text-gray);
-    transition: color 0.3s ease;
-}
-
-footer .social-links a:hover {
-    color: var(--text-light);
+    color: #ffffff;
 }
