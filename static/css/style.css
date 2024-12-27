@@ -12,7 +12,6 @@
     --border-color: rgba(131, 56, 236, 0.3);
 }
 
-/* Body Styling */
 body {
     background-color: var(--dark-bg);
     color: var(--text-light);
@@ -21,29 +20,30 @@ body {
     flex-direction: column;
 }
 
-/* Navbar Styling */
+/* Navbar styling to match base.html exactly */
 .navbar {
-    background: linear-gradient(to right, var(--primary), var(--secondary)); /* Gradient background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .navbar .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 1rem 0;
 }
 
-.navbar .logo {
+.navbar .logo a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
 }
 
 .navbar .logo img {
@@ -53,25 +53,24 @@ body {
 
 .navbar .logo span {
     font-size: 1.5rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: bold;
+    color: var(--text-light);
 }
 
 .navbar .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
-.navbar .nav-link {
+.nav-link {
     position: relative;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #ffffff;
-    padding: 0.5rem;
+    color: var(--text-light);
+    padding: 0.5rem 1rem;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
-.navbar .nav-link:after {
+.nav-link:after {
     content: '';
     position: absolute;
     width: 0;
@@ -79,60 +78,51 @@ body {
     bottom: 0;
     left: 50%;
     background-color: var(--accent);
-    transition: width 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s;
     transform: translateX(-50%);
 }
 
-.navbar .nav-link:hover:after {
+.nav-link:hover:after {
     width: 100%;
-    transform: translateX(0);
 }
 
-/* Search and Logout buttons on the right (optional, for authenticated users) */
-.navbar .auth-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+/* Main content styling */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.navbar .auth-links .search-form input {
-    padding: 0.5rem;
-    border: 1px solid #9ba1a6;
-    background-color: #1a1d23;
-    color: #ffffff;
-    border-radius: 0.375rem;
-}
-
-.navbar .auth-links .search-form button {
-    padding: 0.5rem 1rem;
-    background-color: var(--primary);
-    color: #ffffff;
-    border-radius: 0.375rem;
-}
-
-.navbar .auth-links .logout-btn {
-    padding: 0.5rem 1rem;
-    background-color: var(--secondary);
-    color: #ffffff;
-    border-radius: 0.375rem;
-}
-
-/* Main Content Styling */
 main {
-    padding: 2rem 1rem;
     flex-grow: 1;
+    padding: 2rem 0;
 }
 
-/* Footer Styling */
+/* Server grid and status elements */
+.server-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.copy-button {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    opacity: 0.9;
+}
+
+/* Footer styling to match base.html exactly */
 footer {
-    margin-top: auto;
     background-color: var(--darker-bg);
     border-top: 1px solid var(--border-color);
+    margin-top: auto;
 }
 
 footer .container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: 2rem 1rem;
 }
 
 footer .flex {
@@ -141,27 +131,64 @@ footer .flex {
     align-items: center;
 }
 
-footer .logo {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+@media (max-width: 768px) {
+    footer .flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
-footer .logo img {
+footer img {
     width: 2rem;
     height: 2rem;
 }
 
-footer .logo span {
-    font-size: 0.875rem;
-    color: #9ba1a6;
+footer .text-gray-400 {
+    color: var(--text-gray);
 }
 
-footer .social-links a {
-    color: #9ba1a6;
-    transition: color 0.3s ease;
+footer a {
+    color: var(--text-gray);
+    transition: color 0.3s;
 }
 
-footer .social-links a:hover {
-    color: #ffffff;
+footer a:hover {
+    color: var(--text-light);
+}
+
+/* Card styling for server status */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        gap: 1rem;
+    }
+    
+    .server-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) {
+    .server-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .server-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
