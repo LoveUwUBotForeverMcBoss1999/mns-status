@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://mnsnetwork.xyz/logo.png">
-    
     <!-- Primary Meta Tags -->
     <title>MNS Minecraft Network - Server Status</title>
     <meta name="title" content="MNS Minecraft Network - Server Status">
@@ -26,39 +23,168 @@
     <meta property="twitter:description" content="{{ proxy_players }}/{{ proxy_max_players }} Players Online - Join our Minecraft network featuring SkyBlock, LifeSteal, SkyWars, and more!">
     <meta property="twitter:image" content="https://mnsnetwork.xyz/logo.png">
     
-    <!-- Styles and Scripts -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://mnsnetwork.xyz/logo.png">
+    <link rel="apple-touch-icon" href="https://mnsnetwork.xyz/logo.png">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2970e6;
+            --secondary: #8338ec;
+            --secondary-dark: #7026d9;
+            --accent: #ffbe0b;
+            --dark-bg: #121418;
+            --darker-bg: #0a0c0f;
+            --card-bg: #1a1d23;
+            --text-light: #ffffff;
+            --text-gray: #9ba1a6;
+            --border-color: rgba(131, 56, 236, 0.3);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .server-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .server-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
+        }
+
+        .copy-button {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: var(--darker-bg);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <nav>
-            <a href="https://mnsnetwork.xyz/" class="home-link">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
-        </nav>
-        
-        <header>
-            <h1>MNS Minecraft Network</h1>
-            <div class="total-players">
+    <!-- Enhanced Navigation -->
+    <nav class="bg-gradient-to-r from-primary to-secondary shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <a href="{{ url_for('home') }}" class="flex items-center space-x-2">
+                        <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-10 h-10">
+                        <span class="text-2xl font-bold text-white">MNS Network</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="https://mnsnetwork.xyz/" class="nav-link">Home</a>
+                        <a href="{{ url_for('home') }}" class="nav-link">Forum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Server Status</h1>
+            <div class="text-2xl text-gray-300">
                 <span id="current-players">-</span>/<span id="max-players">-</span> Players Online
             </div>
         </header>
 
-        <main>
-            <div class="server-grid" id="server-grid">
-                <!-- Servers will be populated by JavaScript -->
-            </div>
+        <div class="server-grid" id="server-grid">
+            <!-- Servers will be populated by JavaScript -->
+        </div>
 
-            <div class="ip-section">
-                <button id="copy-ip" class="copy-button">
-                    <span class="ip">mc.mnsnetwork.xyz</span>
-                    <i class="fas fa-copy"></i>
-                </button>
+        <div class="text-center mt-8">
+            <button id="copy-ip" class="copy-button mx-auto">
+                <span class="ip text-lg">mc.mnsnetwork.xyz</span>
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="py-8 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-8 h-8">
+                    <span class="text-sm text-gray-400">© 2024 MNS Minecraft Network. All Rights Reserved.</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a target="_blank" href="https://discord.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-discord fa-lg"></i>
+                    </a>
+                    <a href="https://status.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-server fa-lg"></i>
+                    </a>
+                    <a href="https://mnsnetwork.xyz/tos" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-file-alt fa-lg"></i>
+                    </a>
+                </div>
             </div>
-        </main>
-    </div>
+        </div>
+    </footer>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
