@@ -47,3 +47,145 @@
     transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(131, 56, 236, 0.3);
 }
+
+
+
+
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(to right, #3a86ff, #8338ec); /* Primary to secondary gradient */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+.navbar .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.navbar .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar .logo img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.navbar .logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.navbar .nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbar .nav-link {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.navbar .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #ffbe0b;
+    transition: width 0.3s ease, transform 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover:after {
+    width: 100%;
+    transform: translateX(0);
+}
+
+/* Make search and logout buttons look consistent in the right side (if needed) */
+.navbar .auth-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.navbar .auth-links .search-form input {
+    padding: 0.5rem;
+    border: 1px solid #9ba1a6;
+    background-color: #1a1d23;
+    color: #ffffff;
+    border-radius: 0.375rem;
+}
+
+.navbar .auth-links .search-form button {
+    padding: 0.5rem 1rem;
+    background-color: #3a86ff;
+    color: #ffffff;
+    border-radius: 0.375rem;
+}
+
+.navbar .auth-links .logout-btn {
+    padding: 0.5rem 1rem;
+    background-color: #8338ec;
+    color: #ffffff;
+    border-radius: 0.375rem;
+}
+
+/* Footer styling */
+footer {
+    margin-top: auto;
+    background-color: #0a0c0f;
+    border-top: 1px solid rgba(131, 56, 236, 0.3);
+}
+
+footer .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+footer .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer .logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+footer .logo span {
+    font-size: 0.875rem;
+    color: #9ba1a6;
+}
+
+footer .social-links a {
+    color: #9ba1a6;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: #ffffff;
+}
