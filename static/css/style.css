@@ -6,6 +6,10 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
     color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .server-card h3.server-name {
@@ -13,6 +17,8 @@
     font-weight: 600;
     color: var(--accent);
     margin-bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
 }
 
 .server-card .server-status {
@@ -26,21 +32,23 @@
 }
 
 .server-card .server-status .status-indicator {
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     display: inline-block;
-    background-color: var(--warning-color); /* Default to offline */
+    background-color: #dc2626; /* Red for offline */
 }
 
 .server-card .server-status .status-indicator.status-online {
-    background-color: var(--success-color); /* Green for online */
+    background-color: #22c55e; /* Green for online */
 }
 
 .server-card .server-players {
     font-size: 1rem;
     margin-top: 0.5rem;
     color: var(--text-light);
+    text-align: center;
+    width: 100%;
 }
 
 .server-card:hover {
