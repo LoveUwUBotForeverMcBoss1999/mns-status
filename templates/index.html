@@ -29,33 +29,120 @@
     
     <!-- Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #3a86ff;
+            --primary-dark: #2970e6;
+            --secondary: #8338ec;
+            --secondary-dark: #7026d9;
+            --accent: #ffbe0b;
+            --dark-bg: #121418;
+            --darker-bg: #0a0c0f;
+            --card-bg: #1a1d23;
+            --text-light: #ffffff;
+            --text-gray: #9ba1a6;
+            --border-color: rgba(131, 56, 236, 0.3);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
+        }
+
+        .copy-button {
+            background-color: var(--primary);
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: var(--darker-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Status-specific styles */
+        .text-primary {
+            color: var(--primary);
+        }
+
+        #server-grid .card {
+            margin-bottom: 1rem;
+        }
+
+        .from-primary {
+            --tw-gradient-from: var(--primary);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(58, 134, 255, 0));
+        }
+
+        .to-secondary {
+            --tw-gradient-to: var(--secondary);
+        }
+    </style>
 </head>
 <body>
-    <!-- Enhanced Navigation -->
-    <nav class="navbar">
-    <div class="container">
-        <div class="flex">
-            <!-- Logo and Navigation Links -->
-            <div class="logo">
-                <a href="https://mnsnetwork.xyz/" class="flex items-center">
-                    <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo">
-                    <span class="text-white">MNS Network</span>
-                </a>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="nav-links">
-                <a href="https://mnsnetwork.xyz/" class="nav-link">Home</a>
-                <a href="https://status.mnsnetwork.xyz/" class="nav-link">Status</a>
+    <!-- Enhanced Navigation - EXACTLY matching base.html -->
+    <nav class="bg-gradient-to-r from-primary to-secondary shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-8">
+                    <a href="https://mnsnetwork.xyz/" class="flex items-center space-x-2">
+                        <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-10 h-10">
+                        <span class="text-2xl font-bold text-white">MNS Network</span>
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="https://mnsnetwork.xyz/" class="nav-link">Home</a>
+                        <a href="https://status.mnsnetwork.xyz/" class="nav-link">Status</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 flex-grow">
+    <main class="container mx-auto px-4 py-8">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold mb-4">Server Status</h1>
             <div class="text-2xl text-primary">
@@ -75,7 +162,7 @@
         </div>
     </main>
 
-    <!-- Enhanced Footer -->
+    <!-- Enhanced Footer - EXACTLY matching base.html -->
     <footer class="py-8 px-4">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -83,11 +170,13 @@
                     <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-8 h-8">
                     <span class="text-sm text-gray-400">© 2024 MNS Minecraft Network. All Rights Reserved.</span>
                 </div>
-                <div class="flex items-center space-x-6">
+                <div class="flex space-x-6">
                     <a target="_blank" href="https://discord.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-discord fa-lg"></i>
                     </a>
-                    <a class="text-gray-400 hover:text-white transition-colors" href="https://forum.mnsnetwork.xyz/"><i class="fas fa-comments"></i></a>
+                    <a href="https://status.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-server"></i>
+                    </a>
                     <a href="https://mnsnetwork.xyz/tos" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fas fa-file-alt"></i>
                     </a>
