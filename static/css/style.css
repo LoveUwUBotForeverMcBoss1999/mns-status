@@ -1,59 +1,21 @@
-.server-card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-align: center;
-    color: var(--text-light);
+/* Define Global Colors */
+:root {
+    --primary: #3a86ff;
+    --primary-dark: #2970e6;
+    --secondary: #8338ec;
+    --secondary-dark: #7026d9;
+    --accent: #ffbe0b;
+    --dark-bg: #121418;
+    --darker-bg: #0a0c0f;
+    --card-bg: #1a1d23;
+    --text-light: #ffffff;
+    --text-gray: #9ba1a6;
+    --border-color: rgba(131, 56, 236, 0.3);
 }
-
-.server-card h3.server-name {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-}
-
-.server-card .server-status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    color: var(--text-gray);
-}
-
-.server-card .server-status .status-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    background-color: var(--warning-color); /* Default to offline */
-}
-
-.server-card .server-status .status-indicator.status-online {
-    background-color: var(--success-color); /* Green for online */
-}
-
-.server-card .server-players {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    color: var(--text-light);
-}
-
-.server-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(131, 56, 236, 0.3);
-}
-
-
-
 
 /* Navbar Styling */
 .navbar {
-    background: linear-gradient(to right, #3a86ff, #8338ec); /* Primary to secondary gradient */
+    background: linear-gradient(to right, var(--primary), var(--secondary)); /* Primary to secondary gradient */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
@@ -84,7 +46,7 @@
 .navbar .logo span {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-light);
 }
 
 .navbar .nav-links {
@@ -96,7 +58,7 @@
     position: relative;
     font-size: 1rem;
     font-weight: 500;
-    color: #ffffff;
+    color: var(--text-light);
     padding: 0.5rem;
     text-decoration: none;
 }
@@ -108,7 +70,7 @@
     height: 2px;
     bottom: 0;
     left: 50%;
-    background-color: #ffbe0b;
+    background-color: var(--accent);
     transition: width 0.3s ease, transform 0.3s ease;
     transform: translateX(-50%);
 }
@@ -118,7 +80,7 @@
     transform: translateX(0);
 }
 
-/* Make search and logout buttons look consistent in the right side (if needed) */
+/* Search and Logout button styles */
 .navbar .auth-links {
     display: flex;
     gap: 1rem;
@@ -129,29 +91,29 @@
     padding: 0.5rem;
     border: 1px solid #9ba1a6;
     background-color: #1a1d23;
-    color: #ffffff;
+    color: var(--text-light);
     border-radius: 0.375rem;
 }
 
 .navbar .auth-links .search-form button {
     padding: 0.5rem 1rem;
-    background-color: #3a86ff;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--text-light);
     border-radius: 0.375rem;
 }
 
 .navbar .auth-links .logout-btn {
     padding: 0.5rem 1rem;
-    background-color: #8338ec;
-    color: #ffffff;
+    background-color: var(--secondary);
+    color: var(--text-light);
     border-radius: 0.375rem;
 }
 
-/* Footer styling */
+/* Footer Styling */
 footer {
     margin-top: auto;
-    background-color: #0a0c0f;
-    border-top: 1px solid rgba(131, 56, 236, 0.3);
+    background-color: var(--darker-bg);
+    border-top: 1px solid var(--border-color);
 }
 
 footer .container {
@@ -178,14 +140,69 @@ footer .logo img {
 
 footer .logo span {
     font-size: 0.875rem;
-    color: #9ba1a6;
+    color: var(--text-gray);
 }
 
 footer .social-links a {
-    color: #9ba1a6;
+    color: var(--text-gray);
     transition: color 0.3s ease;
 }
 
 footer .social-links a:hover {
-    color: #ffffff;
+    color: var(--text-light);
+}
+
+/* Additional Styling */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
+}
+
+/* Input Field Styling */
+.input-field {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s;
+}
+
+.input-field:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+/* Button Primary Styling */
+.btn-primary {
+    background-color: var(--primary);
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Footer Links Transition */
+footer .social-links a {
+    color: var(--text-gray);
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: var(--text-light);
 }
