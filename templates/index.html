@@ -54,6 +54,11 @@
             flex-direction: column;
         }
 
+        nav {
+            background-color: var(--darker-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
         .nav-link {
             position: relative;
             color: var(--text-light);
@@ -88,13 +93,23 @@
             box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
         }
 
-        .copy-button {
+        .btn-primary {
             background-color: var(--primary);
             transition: background-color 0.3s;
         }
 
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .copy-button {
+            background-color: var(--primary);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
         .copy-button:hover {
             background-color: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
         footer {
@@ -103,30 +118,25 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* Status-specific styles */
-        .text-primary {
-            color: var(--primary);
+        .server-status-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        #server-grid .card {
-            margin-bottom: 1rem;
-        }
-
-        .from-primary {
-            --tw-gradient-from: var(--primary);
-            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(58, 134, 255, 0));
-        }
-
-        .to-secondary {
-            --tw-gradient-to: var(--secondary);
+        .server-status-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(131, 56, 236, 0.15);
         }
     </style>
 </head>
 <body>
-    <!-- Enhanced Navigation - EXACTLY matching base.html -->
-    <nav class="bg-gradient-to-r from-primary to-secondary shadow-lg">
+    <!-- Navigation -->
+    <nav class="py-4">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
+            <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-8">
                     <a href="https://mnsnetwork.xyz/" class="flex items-center space-x-2">
                         <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-10 h-10">
@@ -142,7 +152,7 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-8 flex-grow">
         <div class="text-center mb-12">
             <h1 class="text-4xl font-bold mb-4">Server Status</h1>
             <div class="text-2xl text-primary">
@@ -162,7 +172,7 @@
         </div>
     </main>
 
-    <!-- Enhanced Footer - EXACTLY matching base.html -->
+    <!-- Footer -->
     <footer class="py-8 px-4">
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -170,13 +180,11 @@
                     <img src="https://mnsnetwork.xyz/logo.png" alt="MNS Logo" class="w-8 h-8">
                     <span class="text-sm text-gray-400">© 2024 MNS Minecraft Network. All Rights Reserved.</span>
                 </div>
-                <div class="flex space-x-6">
+                <div class="flex items-center space-x-6">
                     <a target="_blank" href="https://discord.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-discord fa-lg"></i>
                     </a>
-                    <a href="https://status.mnsnetwork.xyz/" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fa-solid fa-server"></i>
-                    </a>
+                    <a class="text-gray-400 hover:text-white transition-colors" href="https://forum.mnsnetwork.xyz/"><i class="fas fa-comments"></i></a>
                     <a href="https://mnsnetwork.xyz/tos" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fas fa-file-alt"></i>
                     </a>
