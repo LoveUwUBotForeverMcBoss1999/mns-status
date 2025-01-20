@@ -11,11 +11,12 @@ PROXY_PORT = 25565
 SERVERS = {
     "Proxy": {"ip": "panel2.mcboss.top", "port": 25565},
     "Hub": {"ip": "panel2.mcboss.top", "port": 25567},
-    "SkyBlock": {"ip": "panel2.mcboss.top", "port": 25570},
+    "SkyBlock": {"ip": "in.leoxstudios.com", "port": 10007},
     "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
     "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
-    "Survival": {"ip": "in.leoxstudios.com", "port": 10007},  # Added missing comma here
-    "Towny": {"ip": "towny.mnsnetwork.xyz", "port": 25595}
+    "BedWars": {"ip": "panel2.mcboss.top", "port": 25586},  # Added missing comma here
+    "Towny": {"ip": "109.123.234.73", "port": 25595},  # Added missing comma here
+    #"Towny": {"ip": "towny.mnsnetwork.xyz", "port": 25595}
 }
 
 @app.route('/')
