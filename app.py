@@ -12,7 +12,7 @@ SERVERS = {
     "Proxy": {"ip": "panel2.mcboss.top", "port": 25565},
     "Hub": {"ip": "panel2.mcboss.top", "port": 25567},
     "SkyBlock": {"ip": "in.leoxstudios.com", "port": 10007},
-    "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
+    "LifeSteal": {"ip": "152.42.183.179", "port": 4025},
     "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
     "BedWars": {"ip": "panel2.mcboss.top", "port": 25586},  # Added missing comma here
     "Towny": {"ip": "109.123.234.73", "port": 25595},  # Added missing comma here
