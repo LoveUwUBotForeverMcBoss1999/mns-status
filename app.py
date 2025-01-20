@@ -14,7 +14,7 @@ SERVERS = {
     "SkyBlock": {"ip": "panel2.mcboss.top", "port": 25570},
     "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
     "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
-    "Survival": {"ip": "in.leoxstudios.com", "port": 10007}
+    "Survival": {"ip": "in.leoxstudios.com", "port": 10007},  # Added missing comma here
     "Towny": {"ip": "towny.mnsnetwork.xyz", "port": 25595}
 }
 
