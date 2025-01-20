@@ -15,6 +15,7 @@ SERVERS = {
     "LifeSteal": {"ip": "panel2.mcboss.top", "port": 25566},
     "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
     "Survival": {"ip": "in.leoxstudios.com", "port": 10007}
+    "Towny": {"ip": "towny.mnsnetwork.xyz", "port": 25595}
 }
 
 @app.route('/')
