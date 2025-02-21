@@ -11,7 +11,7 @@ PROXY_PORT = 25565
 SERVERS = {
     "Proxy": {"ip": "panel2.mcboss.top", "port": 25565},
     "Hub": {"ip": "panel2.mcboss.top", "port": 25567},
-    "SkyBlock": {"ip": "in.leoxstudios.com", "port": 10007},
+    "SkyBlock": {"ip": "sg.leoxstudios.com", "port": 1029},
     "LifeSteal": {"ip": "152.42.183.179", "port": 4025},
     "SkyWars": {"ip": "panel2.mcboss.top", "port": 25569},
     "BedWars": {"ip": "panel2.mcboss.top", "port": 25586},  # Added missing comma here
